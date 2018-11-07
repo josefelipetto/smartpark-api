@@ -17,7 +17,7 @@ Para autenticar na API, utilize a rota POST /auth/login , enviando no body os ca
 
 Método   | Path   | Descricao | Input       | Regras
 -------  | ------ | --------- | ------------| ---------|
-    GET  | /user/{id} | Retorna informações de usuário | 
+    GET  | /user/{id} | Retorna informações de usuário |  {} | "" |
     POST | /user | Cria um novo usuário |  { nome, email, matricula, senha, tipo } | Todos os campos são obrigatórios. E-mail deve ser um e-mail válido. Matricula deve ter no minimo 10 caracteres. Senha deve ter entre 6 e 16 caracteres. Tipo deve ser A ou P.
     PUT  | /user/{id} | Edita um usuário | Igual o POST porém sem Tipo. Só precisa mandar o campo que foi alterado. | Mesmas regras do POST porém nenhum campo é obrigatório.
     DELETE | /user/{id}/ Deleta um usuário | |
