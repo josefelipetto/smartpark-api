@@ -36,7 +36,7 @@ class JwtMiddleware
             return response()->json([
                 'data' => [],
                 'message' => $exception->getMessage()
-            ]);
+            ],400);
         }
 
         $user = User::find($credentials->sub);
