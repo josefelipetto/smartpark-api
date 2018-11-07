@@ -15,18 +15,18 @@ Para autenticar na API, utilize a rota POST /auth/login , enviando no body os ca
 
 ## Endpoints
 
-Método   | Path   | Descricao | Input       | Regras
----  | --- | --- | --- | --- 
-GET  | /user/{id} | Retorna informações de usuário |  {} | "" 
-POST | /user | Cria um novo usuário |  ``` { nome, email, matricula, senha, tipo } ``` | Todos os campos são obrigatórios. E-mail deve ser um e-mail válido. Matricula deve ter no minimo 10 caracteres. Senha deve ter entre 6 e 16 caracteres. Tipo deve ser A ou P.
-PUT  | /user/{id} | Edita um usuário | Igual o POST porém sem Tipo. Só precisa mandar o campo que foi alterado. | Mesmas regras do POST porém nenhum campo é obrigatório.
-DELETE | /user/{id}/ Deleta um usuário | "" | ""
-POST | /user/{id}/card | Cria um novo cartão de cŕedito para o usuário {id} | ``` { numero, validade, cvv, bandeira } ``` | Todos os campos são obrigatórios. O número deve ser um cartão válido. A validade deve ser no formato m/y(02/23,03/25,...). cvv deve ser um cvv válido. Bandeira é uma string com o nome da bandeira(Mastercard,Visa,etc)
-DELETE | /user/{user_id}/card/{card_id} | Deleta um cartão de crédito do usuário | "" | ""
-GET | /user/{user_id}/tradings | Retorna uma lista de todas as transações financeiras do usuário 
-POST | /user/{user_id}/trade | Gera uma nova movimentação(Recarga ou utilização) | ``` {cartao_de_credito_id,valor,tipo}```  | Cartão de crédito deve ser um cartão de crédito do usuário). Valor deve ser numérico, negativo para gastar e positivo para carregar. Tipo deve ser E ou S.
-GET | /user/{user_id}/balance | Retorna o saldo do usuário {user_id}
-POST | /auth/login | Faz login e retorna um token de acesso a API. | {email,senha}  | ""
+| Método   | Path   | Descricao | Input       | Regras |
+| ---  | --- | --- | --- | --- 
+| GET  | /user/{id} | Retorna informações de usuário |  {} |  |
+| POST | /user | Cria um novo usuário |  ``` { nome, email, matricula, senha, tipo } ``` | Todos os campos são obrigatórios. E-mail deve ser um e-mail válido. Matricula deve ter no minimo 10 caracteres. Senha deve ter entre 6 e 16 caracteres. Tipo deve ser A ou P.|
+| PUT  | /user/{id} | Edita um usuário | Igual o POST porém sem Tipo. Só precisa mandar o campo que foi alterado. | Mesmas regras do POST porém nenhum campo é obrigatório.|
+| DELETE | /user/{id}/ Deleta um usuário |  |  |
+| POST | /user/{id}/card | Cria um novo cartão de cŕedito para o usuário {id} | ``` { numero, validade, cvv, bandeira } ``` | Todos os campos são obrigatórios. O número deve ser um cartão válido. A validade deve ser no formato m/y(02/23,03/25,...). cvv deve ser um cvv válido. Bandeira é uma string com o nome da bandeira(Mastercard,Visa,etc)|
+| DELETE | /user/{user_id}/card/{card_id} | Deleta um cartão de crédito do usuário |  |  |
+| GET | /user/{user_id}/tradings | Retorna uma lista de todas as transações financeiras do usuário |  |  |
+| POST | /user/{user_id}/trade | Gera uma nova movimentação(Recarga ou utilização) | ``` {cartao_de_credito_id,valor,tipo}```  | Cartão de crédito deve ser um cartão de crédito do usuário). Valor deve ser numérico, negativo para gastar e positivo para carregar. Tipo deve ser E ou S.|
+| GET | /user/{user_id}/balance | Retorna o saldo do usuário {user_id} |  |  |
+| POST | /auth/login | Faz login e retorna um token de acesso a API. | {email,senha}  |  |
     
 # Retorno
 
