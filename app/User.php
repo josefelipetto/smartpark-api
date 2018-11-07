@@ -34,4 +34,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasMany(CartaoDeCredito::class);
     }
+
+    public function movimentos()
+    {
+        return $this->hasManyThrough(Movimento::class,CartaoDeCredito::class,'user_id','cartao_de_credito_id');
+    }
 }

@@ -32,4 +32,8 @@ class CartaoDeCredito extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function movimentos(){
+        return $this->hasMany(Movimento::class);
+    }
+
 }

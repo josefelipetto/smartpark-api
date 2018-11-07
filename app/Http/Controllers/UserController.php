@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -50,7 +51,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'matricula' => 'required|string|min:10',
             'senha' => 'required|min:6|max:16|string',
-            'tipo' => 'required'
+            'tipo' => ['required', Rule::in(['A','P'])]
         ],$this->messages);
 
         if ($validator->fails())
@@ -94,7 +95,7 @@ class UserController extends Controller
             'nome' => 'string',
             'email' => 'email',
             'matricula' => 'string|min:10',
-            'senha' => 'min:6|max:8|string',
+            'senha' => 'min:6|max:16|string',
         ],$this->messages);
 
         if ($validator->fails())
@@ -109,6 +110,13 @@ class UserController extends Controller
         {
             /* @var \App\User $user */
             $user = User::findOrFail($id);
+
+            if($request->has('senha'))
+            {
+                $request->merge([
+                    'senha' => Hash::make($request->input('senha'))
+                ]);
+            }
 
             $user->update($request->all());
 
