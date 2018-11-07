@@ -65,7 +65,7 @@ Todo endpoint tem um formato padrão de retorno. Data retorna o objeto desejado,
 ```json
 {
     "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsdW1lbi1qd3QiLCJzdWIiOjIsImlhdCI6MTU0MTYyODM4NiwiZXhwIjoxNTU0NTg4Mzg2fQ.-eQPNep3cd8D-HKryfo9AOerYirlgNCKR3FQduqjx20"
+        "token": "eyJ0eXAiOirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrImlhdCI6MTU0MTYyODM4NiwiZXhwIjoxNTU0NTg4Mzg2fQ.-eQPNep3cd8D-HKryfo9AOerYirlgNCKR3FQduqjx20"
     },
     "message": null
 }
