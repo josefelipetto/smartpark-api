@@ -26,7 +26,7 @@ Para autenticar na API, utilize a rota POST /auth/login , enviando no body os ca
 | GET | /user/{user_id}/tradings | Retorna uma lista de todas as transações financeiras do usuário |  |  |
 | POST | /user/{user_id}/trade | Gera uma nova movimentação(Recarga ou utilização) | ``` {cartao_de_credito_id,valor,tipo}```  | Cartão de crédito deve ser um cartão de crédito do usuário). Valor deve ser numérico, negativo para gastar e positivo para carregar. Tipo deve ser E ou S.|
 | GET | /user/{user_id}/balance | Retorna o saldo do usuário {user_id} |  |  |
-| POST | /auth/login | Faz login e retorna um token de acesso a API. | {email,senha}  |  |
+| POST | /auth/login | Faz login e retorna um token de acesso a API. | ```{email,senha}```  |  |
     
 # Retorno
 
