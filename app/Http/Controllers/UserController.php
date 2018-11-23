@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Firebase\JWT\JWT;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
@@ -17,9 +20,43 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+    private $request;
+
+    public function __construct(Request $request)
     {
-        // left blank
+        $this->request = $request;
+    }
+
+    public function loggedUser()
+    {
+
+        try
+        {
+            $decoded = JWT::decode(
+                $this->request->header('authorization'),
+                env('JWT_SECRET'),
+                ['HS256']
+            );
+
+            /* @var User $user */
+            $user = User::find($decoded->sub);
+
+            $user->load('cartaoDeCredito');
+
+            return response()->json([
+                'data' => $user,
+                'message' => null
+            ],200);
+
+        }
+        catch (\Exception $exception)
+        {
+            return response()->json([
+                'data' => [],
+                'message' => $exception->getMessage()
+            ],404);
+        }
     }
 
     public function show($id)

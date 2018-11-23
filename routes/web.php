@@ -22,6 +22,7 @@ $router->group(['prefix' => 'api'], function () use ($router){
     $router->group(['prefix' => 'user','middleware' => 'jwt.auth'], function () use($router){
         $router->get('{id}','UserController@show');
         $router->post('/','UserController@store');
+        $router->get('/logged','UserController@loggedUser');
         $router->put('{id}','UserController@update');
         $router->delete('{id}','UserController@destroy');
         $router->post('{id}/card','CreditCardController@store');
