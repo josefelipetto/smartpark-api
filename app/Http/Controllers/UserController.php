@@ -59,28 +59,6 @@ class UserController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        try
-        {
-            $user = User::with('cartaoDeCredito')->findOrFail($id);
-
-            return response()->json([
-                'data' => $user,
-                'message' => null
-            ],200);
-        }
-        catch (ModelNotFoundException $exception)
-        {
-            return response()->json([
-                'data' => [],
-                'message' => $exception->getMessage()
-            ],404);
-        }
-
-
-    }
-
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
