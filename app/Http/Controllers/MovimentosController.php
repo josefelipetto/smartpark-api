@@ -46,8 +46,7 @@ class MovimentosController extends Controller
 
         $validator = Validator::make($request->all(),[
            'cartao_de_credito_id' => 'required|exists:cartoes_de_credito,id',
-            'valor' => 'required|numeric',
-            'tipo' => ['required',Rule::in(['E','S'])]
+            'valor' => 'required|numeric'
         ],$this->messages);
 
         if ($validator->fails())
@@ -62,7 +61,7 @@ class MovimentosController extends Controller
         {
             $valor = $request->input('valor');
 
-            $tipo = $request->input('tipo');
+            $tipo = $valor >= 0 ? 'E' : 'S' ;
 
             if($valor <= 0 && $tipo !== "S" )
             {
