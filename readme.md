@@ -24,7 +24,7 @@ Para autenticar na API, utilize a rota POST /auth/login , enviando no body os ca
 | POST | /user/{id}/card | Cria um novo cartão de cŕedito para o usuário {id} | ``` { numero, validade, cvv, bandeira } ``` | Todos os campos são obrigatórios. O número deve ser um cartão válido. A validade deve ser no formato m/y(02/23,03/25,...). cvv deve ser um cvv válido. Bandeira é uma string com o nome da bandeira(Mastercard,Visa,etc)|
 | DELETE | /user/{user_id}/card/{card_id} | Deleta um cartão de crédito do usuário |  |  |
 | GET | /user/{user_id}/tradings | Retorna uma lista de todas as transações financeiras do usuário |  |  |
-| POST | /user/{user_id}/trade | Gera uma nova movimentação(Recarga ou utilização) | ``` {cartao_de_credito_id,valor,tipo}```  | Cartão de crédito deve ser um cartão de crédito do usuário). Valor deve ser numérico, negativo para gastar e positivo para carregar. Tipo deve ser E ou S.|
+| POST | /user/{user_id}/trade | Gera uma nova movimentação(Recarga ou utilização) | ``` {cartao_de_credito_id,valor}```  | Cartão de crédito deve ser um cartão de crédito do usuário). Valor deve ser numérico, negativo para gastar e positivo para carregar.|
 | GET | /user/{user_id}/balance | Retorna o saldo do usuário {user_id} |  |  |
 | POST | /auth/login | Faz login e retorna um token de acesso a API. | ```{email,senha}```  |  |
     
