@@ -105,11 +105,10 @@ class MovimentosController extends Controller
     public function spend($user_id,$cartao_id,$valor)
     {
 
+        $valor *= -1;
+        
         try
         {
-
-            $tipo = $valor >= 0 ? 'E' : 'S' ;
-
             if($this->getBalance($user_id) + $valor <= 0)
             {
                 return response()->json([
@@ -121,7 +120,7 @@ class MovimentosController extends Controller
             $movimento = Movimento::create([
                 'cartao_de_credito_id' => $cartao_id,
                 'valor' => $valor,
-                'tipo' => $tipo
+                'tipo' => 'S'
             ]);
 
             return response()->json([
