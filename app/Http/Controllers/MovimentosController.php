@@ -101,6 +101,45 @@ class MovimentosController extends Controller
 
     }
 
+
+    public function spend($user_id,$cartao_id,$valor)
+    {
+
+        try
+        {
+
+            $tipo = $valor >= 0 ? 'E' : 'S' ;
+
+            if($this->getBalance($user_id) + $valor <= 0)
+            {
+                return response()->json([
+                    'data' => [],
+                    'message' => 'Saldo nao poderá ficar negativo. '
+                ],400);
+            }
+
+            $movimento = Movimento::create([
+                'cartao_de_credito_id' => $cartao_id,
+                'valor' => $valor,
+                'tipo' => $tipo
+            ]);
+
+            return response()->json([
+                'data' => $movimento,
+                'message' => 'Created'
+            ],201);
+
+        }
+        catch (\Exception $exception)
+        {
+            return response()->json([
+                'data' => [],
+                'message' => $exception->getMessage()
+            ],500);
+        }
+
+    }
+
     public function balance($user_id)
     {
         try

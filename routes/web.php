@@ -30,6 +30,7 @@ $router->group(['prefix' => 'api'], function () use ($router){
 
             $router->get('{user_id}/tradings','MovimentosController@show');
             $router->post('{user_id}/trade','MovimentosController@store');
+            $router->get('{user_id}/spend/{cartao}/{valor}','MovimentosController@spend');
             $router->get('{user_id}/balance','MovimentosController@balance');
         });
 
