@@ -106,7 +106,7 @@ class MovimentosController extends Controller
     {
 
         $valor *= -1;
-        
+
         try
         {
             if($this->getBalance($user_id) + $valor <= 0)
