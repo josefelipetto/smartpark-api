@@ -1,7 +1,5 @@
 # Smartpark - API
 
-Public URL: http://smartparkapi-env.52xifpf7uk.us-east-2.elasticbeanstalk.com/api/
-
 ## Autenticação
 
 Para autenticar na API, utilize a rota POST /auth/login , enviando no body os campos e-mail e senha. Se o login for bem sucedido, retorna um token de Acesso. Este token deve ser colocado em cada requisição para a API no header Authorization. Ex: Se o token retornado é ABCDEFGH , então o header Authorization ficará assim: 
